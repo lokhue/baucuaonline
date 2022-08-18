@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/min.css">
+    <link rel="stylesheet" href="./assets/fontawesome-free-6.1.2-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/toast/style.css">
+    <link rel="stylesheet" href="./assets/fontawesome-free-6.1.2-web/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="toast"></div>
+    <div class="app">
+        <div class="grid wide">
+            <div class="header">
+                <div class="header__coin">
+                    <i class="fa-solid fa-coins coin-icon"></i>
+                    <span class="quantity">0</span>
+                </div>
+                <div class="login-control">
+                    <div class="login-btn-box">
+                        <div class="login-control__link register-btn">Đăng Ký</div>
+                        <span class="separate"></span>
+                        <div class="login-control__link login-btn">Đăng Nhập</div>
+                    </div>
+                    <div class="user-box" style="display: none;">
+                        <span class="user-name">Lộc Nguyễn</span>
+                        <div class="user-menu">
+                            <i class="fa-solid fa-bars user-menu-icon"></i>
+                            <ul class="menu">
+                                <li class="menu-item">Thông tin tài khoản</li>
+                                <li class="menu-item">Liên hệ</li>
+                                <li class="menu-item logout-btn">Đăng xuất</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-body">
+                <div class="row game-body-wrapper">
+                    <div class="col l-3">
+                        <div class="dice-box" style="background-image: url('./assets/Images/dice_bg.png');">
+                            <div class="dice-item-1" style="background-image: url('./assets/Images/deerDice.png');"></div>
+                            <div class="dice-item-2" style="background-image: url('./assets/Images/gourdDice.png');"></div>
+                            <div class="dice-item-3" style="background-image: url('./assets/Images/crabDice.png');"></div>
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        <div class="bet-box">
+                            <div class="row">
+                                <div class="col l-4">
+                                    <div class="bet-box__item" id="deer" style="background-image: url('./assets/Images/deer.png')">
+                                    </div>
+                                </div>
+                                <div class="col l-4">
+                                    <div class="bet-box__item" id="gourd" style="background-image: url('./assets/Images/gourd.png')">
+                                    </div>
+                                </div>
+                                <div class="col l-4">
+                                    <div class="bet-box__item" id="chicken" style="background-image: url('./assets/Images/chicken.png')">
+                                    </div>
+                                </div>
+                                <div class="col l-4">
+                                    <div class="bet-box__item" id="fish" style="background-image: url('./assets/Images/fish.png')">
+                                    </div>
+                                </div>
+                                <div class="col l-4">
+                                    <div class="bet-box__item" id="crab" style="background-image: url('./assets/Images/crab.png')">
+                                    </div>
+                                </div>
+                                <div class="col l-4">
+                                    <div class="bet-box__item" id="shrimp" style="background-image: url('./assets/Images/shrimp.png')">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doneBet-btn noselect" onclick="doneBet()">Đặt xong</div>
+                        </div>
+                    </div>
+                    <div class="col l-3">
+                        <div class="betted-box">
+                        </div>
+                        <!-- <div class="nothing"  style="background-image: url(https://scontent.xx.fbcdn.net/v/t39.1997-6/56361504_2379841505373920_2013161612424249344_n.webp?_nc_cat=1&ccb=1-7&_nc_sid=0572db&_nc_ohc=HodUENkvMPwAX-PF63C&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=00_AT9ckeTjhDDbd6MhUFmuPiVMK9v2ide_wM1Dze6RgrWHRg&oe=62FD6B88); background-repeat: no-repeat; background-size: 250px 250px; cursor: default; height: 250px; width: 250px;"></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal__overlay">
+
+        </div>
+        <div class="modal__body">
+            <div class="bet-modal-wrap">
+                <div class="bet-modal" style="background-image: url(./assets/Images/deer.png);">
+                </div>
+                <input type="text" autocomplete="off" name="moneyBet" class="moneyBet" placeholder="Số tiền muốn đặt" value="">
+                <div class="modal-btn">
+                    <div class="bet-btn btn-hover">Đặt</div>
+                    <div class="cancel-btn btn-hover">Hủy</div>
+                </div>
+            </div>
+
+
+            <div class="form-modal">
+                <form action="" id="form-1" class="form-1" autocomplete="off" style="display: none">
+                    <!-- <h1 class="form-title">Đăng Nhập</h1> -->
+                    <div class="form-group">
+                        <i class="fa-solid fa-user form-icon"></i>
+                        <input type="text" required name="username" class="form-input" id="username" placeholder="Tài khoản">
+                    </div>
+                    <div class="form-group">
+                        <i class="fa-solid fa-lock form-icon"></i>
+                        <input type="password" required name="password" class="form-input" id="password" placeholder="Mật khẩu">
+                    </div>
+                    <button class="form-btn">Đăng nhập</button>
+                </form>
+
+                <form action="" id="form-2" class="form-2" autocomplete="off" style="display: none;">
+                    <h1 class="form-title">Đăng Ký</h1>
+                    <div class="form-group">
+                        <i class="fa-solid fa-highlighter form-icon"></i>
+                        <input type="text" required name="name-register" class="form-input" id="name-register" placeholder="Họ và tên">
+                    </div>
+                    <div class="form-group">
+                        <i class="fa-solid fa-user form-icon"></i>
+                        <input type="text" required name="username-register" class="form-input" id="username-register" placeholder="Tên tài khoản">
+                    </div>
+                    <div class="form-group">
+                        <i class="fa-solid fa-envelope form-icon"></i>
+                        <input type="email" required name="email-register" class="form-input" id="email-register" placeholder="Email đăng ký">
+                    </div>
+                    <div class="form-group">
+                        <i class="fa-solid fa-lock form-icon"></i>
+                        <input type="password" required name="password-register" class="form-input" id="password-register" placeholder="Mật khẩu đăng ký">
+                    </div>
+                    <div class="form-group">
+                        <div class="confirm-wrap">
+                            <i class="fa-solid fa-check form-icon confirm-password-icon" style="display: none;"></i>
+                        </div>
+                        <input type="password" required name="password-register-confirm" class="form-input" id="password-register-confirm" placeholder="Nhập lại mật khẩu">
+                    </div>
+                    <button class="form-btn-register">Đăng ký</button>
+                </form>
+            </div>
+            
+
+            <div class="result">
+                <div class="result__congratulation result__congratulation--active" style="display: none;">
+                    <div class="result__sticker" style="background-image: url(https://scontent.xx.fbcdn.net/v/t39.1997-6/42660608_1941453959226931_6747179775594332160_n.webp?_nc_cat=101&ccb=1-7&_nc_sid=0572db&_nc_ohc=ZGpMFK3Ozn8AX-64yrE&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=00_AT-pOxdIZ0D4zlknVPgoBtngmipez6anSxfrUZFYa6jkmQ&oe=63014AFF); background-repeat: no-repeat; background-size: 200px 200px; cursor: default; height: 200px; width: 200px;"></div>
+                    <div class="betted-result-title">Số lần xuất hiện</div>
+                    <ul class="betted-result-list">
+                        <li class="betted-result-item">
+                            <div class="betted-item">Cua:</div>
+                            <div class="appear-times">2 lần</div>    
+                        </li>
+                        <li class="betted-result-item">
+                            <div class="betted-item">Cá:</div>
+                            <div class="appear-times">1 lần</div>  
+                        </li>
+                    </ul>
+                    <span class="result__dontCry-content">
+                        Lãi 30000 
+                        <i class="fa-solid fa-coins coin-icon"></i>
+                    </span>
+                </div>
+                <div class="result__dontCry" style="display: none">
+                    <div class="result__sticker" style="background-image: url(https://scontent.xx.fbcdn.net/v/t39.1997-6/95735248_375061460078760_2587655467274600448_n.webp?_nc_cat=1&ccb=1-7&_nc_sid=0572db&_nc_ohc=vO1pJ9SXyUAAX_Vf4il&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=00_AT_fDqrQIvBmTPobH9FzKSurO7xySlvw3If-8RSIJT6ZFA&oe=63026511); background-repeat: no-repeat; background-size: 200px 200px; cursor: default; height: 200px; width: 200px;"></div>
+                    <div class="betted-result-title">Số lần xuất hiện</div>
+                    <ul class="betted-result-list">
+                        <li class="betted-result-item">
+                            <div class="betted-item">Cua:</div>
+                            <div class="appear-times">0 lần</div>    
+                        </li>
+                        <li class="betted-result-item">
+                            <div class="betted-item">Cá:</div>
+                            <div class="appear-times">0 lần</div>  
+                        </li>
+                    </ul>
+                    <span class="result__dontCry-content">
+                        Lỗ 20000 
+                        <i class="fa-solid fa-coins coin-icon"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

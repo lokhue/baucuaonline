@@ -1,0 +1,60 @@
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn {
+    display: inline-block;
+    min-width: 150px;
+    padding: 16px 48px;
+    text-align: center;
+    border-radius: 40px;
+    color: #fff;
+    transition: opacity 0.2s ease;
+}
+
+.btn--sm {
+    padding: 12px 32px;
+}
+
+.btn--md {
+    padding: 16px 48px;
+}
+
+.btn--lg {
+    padding: 24px 64px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.btn--disabled {
+    opacity: 0.5 !important;
+    cursor: default !important;
+}
+
+.btn--success {
+    background-color: #71be34;
+}
+
+.btn--error {
+    background-color: #ff623d;
+}
+
+.btn--warning {
+    background-color: #ffb703;
+}
+
+.btn + .btn {
+    margin-left: 30px;
+}
+
+.btn-list + .btn-list {
+    margin-top: 30px;
+}
