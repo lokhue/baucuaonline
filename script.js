@@ -11,7 +11,7 @@ const betBtn = $('.bet-btn')
 const cancelButton = $('.cancel-btn')
 const removeBetButton = $('.betted-close-icon')
 const doneBetbtn = $('.doneBet-btn')
-var currentCoins = 0
+var currentCoins = 10000
 var currentUser = {}
 const quantityCoins = $('.quantity')
 const form1 = $('#form-1')
@@ -28,6 +28,7 @@ modalOverlay.onclick = function() {
 }
 const resultBox = $('.result')
 //register
+updateCoins()
 const nameRegister = $('#name-register')
 const usernameRegister = $('#username-register')
 const emailRegister = $('#email-register')
